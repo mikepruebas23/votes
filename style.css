@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,300&display=swap');
+
 body {
     background: #f2f3f7;
-    /* background-image: url('./1.jfif'); */
+    font-family: 'Roboto', sans-serif;
+    /* background-image: url('./kraken.jfif'); */
     /* background-image: url('./2.jpg'); */
 }
 .cargando{

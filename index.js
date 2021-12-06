@@ -88,7 +88,7 @@ function update(idCollection) {
 }
 
 async function getData() {
-    await db.collection(nameCollection).get()
+    await db.collection(nameCollection).orderBy('votes', 'desc').get()
       .then(querySnapshot => {
         querySnapshot.docs.forEach(doc => {
         list.push(doc.data());
@@ -117,7 +117,7 @@ function renderList(){
         newDiv.innerHTML = list[i].name;
         newComent.innerHTML = list[i].votes;
 
-        Img.setAttribute("src", "dummy.png")
+        Img.setAttribute("src", "./kraken.jfif")
         content.setAttribute("id", list[i].uid);
 
         newDiv.classList.add("titulo");
@@ -159,7 +159,7 @@ function checkLoad(){
 const prhases = [
     '🔥 Vota por tu cancíon favorita! 🔥',
     'Un voto por día 👌',
-    '👅 Sigueme en Instagram elmikerm 👅',
+    '👅 Instagram elmikerm 👅',
     '🦑 TEAM KRAKEN 🦑',
     '🙏 Invita a tus amigos a votar 🙏'
 ]
