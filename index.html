@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votación</title>
+    <link rel="shortcut icon" href="./images/favicon-32x32.png" type="image/x-icon"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com"/>
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="./normalize.css"/>
+    <link rel="stylesheet" href="./style.css"/>
+    <link rel="stylesheet" href="./loader.css"/>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-firestore.js"></script>
+   
+    <!-- <script src="sweetalert2.min.js"></script> -->
+    <!-- <link rel="stylesheet" href="sweetalert2.min.css"> -->
+</head>
+<body>
+    <div id="container" class="container">
+        <div class="content-anuncio">
+            <div id="anuncio" class="anuncio tracking-in-expand">
+                🔥 Vota por tu cancíon favorita! 🔥
+            </div>
+        </div>
+        <div id="onLoad" class="cargando" >Cargando...
+            <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+        </div>
+        <div id="list" class="list"></div> 
+    </div>
+        <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
+    <script src="sweetAlert.js"></script>
+    <script src="firebase.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+</body>
+</html>
