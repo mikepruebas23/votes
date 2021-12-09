@@ -122,7 +122,31 @@ function renderList(){
         newDiv.innerHTML = list[i].name;
         newComent.innerHTML = list[i].votes;
 
-        Img.setAttribute("src", "./kraken.jfif")
+        if(list[i].uid == "PeligroALaRedonda"){
+            Img.setAttribute("src", "./palr.jfif")
+        }
+        else if(list[i].uid == "FresasConCrema"){
+            Img.setAttribute("src", "./fcc.png");
+        }
+        else if(list[i].uid == "AVecesMePregunto"){
+            Img.setAttribute("src", "./avmp.jfif");
+        }
+        else if(list[i].uid == "FuerzaBruta"){
+            Img.setAttribute("src", "./fb.jpg");
+        }
+        else if(list[i].uid == "SiHayOtraVidaTeIreABuscar"){
+            Img.setAttribute("src", "./shovtiab.jpg");
+        }
+        else if(list[i].uid == "Desaparecer"){
+            Img.setAttribute("src", "./desaparecer.jpg");
+        }
+        else if(list[i].uid == "FumandoGanja"){
+            Img.setAttribute("src", "./fg.jpg");
+        }
+        else {
+            Img.setAttribute("src", "./kraken.jfif");
+        }
+
         content.setAttribute("id", list[i].uid);
 
         newDiv.classList.add("titulo");
