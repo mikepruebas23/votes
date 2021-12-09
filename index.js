@@ -10,21 +10,27 @@ var onLoad = document.getElementById('onLoad');
 var anuncio = document.getElementById('anuncio');
 var isVoted = false;
 var isOnDate;
-
+var today;
+var iCont = 0;
 function verifyVoteByDate(){
 
-    let today = new Date(); //Today Date 
+    today = new Date() ; //Today Date 
+    // today = new Date(today);
+    // today.setDate(today.getDate() + 1);
+    console.log(today);
     isOnDate = localStorage.getItem("yourLocalDate");
 
+    // isVoted = true;
     if(isVoted){
         localStorage.setItem("yourLocalDate", today);
     }
     else if(isOnDate) {
-        isVoted = true;
-        
-        if(isOnDate < today){
+        console.log(isOnDate);
+        // isVoted = true;
+        if(compareDates(today, isOnDate)){
             isVoted = false;
             localStorage.removeItem("yourLocalDate");
+            verifyVoteByDate();
         }
     }
     else {
@@ -47,7 +53,6 @@ function update(idCollection) {
     }
     else {
 
-        // let newDiv = document.createElement("div");
         let matches = document.querySelector('button')
         let btn = document.getElementById('btn'+idCollection);
         divList.classList.remove("dflex");
@@ -86,7 +91,6 @@ function update(idCollection) {
         }
     }
 }
-
 async function getData() {
     await db.collection(nameCollection).orderBy('votes', 'desc').get()
       .then(querySnapshot => {
@@ -99,9 +103,10 @@ async function getData() {
     });
     renderList();
 }
-
 function renderList(){
-    // console.log(list);
+    if(getRandonNumber() == 43 ){
+        createAlert("Felicidades","Has ganado el nuevo disco de SANTA RM, comunicate con mikerm para mas información",1)
+    }
     checkLoad(); // revisa si esta cargado los datos
     divList.classList.remove("dnone");
     divList.classList.add("dflex");
@@ -139,13 +144,11 @@ function renderList(){
         divList.appendChild(content);
     }
 }
-
 function createAlert(title,message,typeMessage){
     let type;
     typeMessage == 1 ?  type = 'success' :  type = 'error';
     Swal.fire( title,message,  type );
 }
-
 function checkLoad(){
     if(!bOnLoad) {
         onLoad.classList.remove("block");
@@ -166,15 +169,34 @@ const prhases = [
 function changeNavText(){
     setInterval(()=> { contador() }, 5 * 1000);
 }
-var iCont = 0;
 function contador(){
     anuncio.innerHTML = prhases[iCont];
     iCont++;
     iCont == prhases.length ? iCont = 0 : null;
     // console.log(this.iCont);
 
-  }
+}
+function getRandonNumber() {  
+    return Math.floor(Math.random() * 79) + 1;
+}
+function compareDates(today, yestarday){
+    const date1 = new Date(today);
+    const date2 = new Date(yestarday);
+    let response = false;
+
+    if(date1.getDay() > date2.getDay()){
+        console.log(`${today} is greater than ${yestarday} in terms of days`);
+        console.log(today, yestarday);
+        response = true;
+    } else {
+        console.log(`ELSE`);
+        console.log(today, yestarday);
+    }
+    return response;
+}
 
 changeNavText();
 verifyVoteByDate();
 getData();
+
+// 211
